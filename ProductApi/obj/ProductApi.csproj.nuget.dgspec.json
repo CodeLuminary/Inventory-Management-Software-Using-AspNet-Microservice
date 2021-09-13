@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\InventoryMangement\\InventoryMangement.csproj": {}
+    "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\ProductApi\\ProductApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\InventoryMangement\\InventoryMangement.csproj": {
+    "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\ProductApi\\ProductApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\InventoryMangement\\InventoryMangement.csproj",
-        "projectName": "InventoryMangement",
-        "projectPath": "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\InventoryMangement\\InventoryMangement.csproj",
+        "projectUniqueName": "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\ProductApi\\ProductApi.csproj",
+        "projectName": "ProductApi",
+        "projectPath": "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\ProductApi\\ProductApi.csproj",
         "packagesPath": "C:\\Users\\VICTOR\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\InventoryMangement\\obj\\",
+        "outputPath": "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\ProductApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,9 +43,13 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Ocelot": {
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[17.0.0, )"
+              "version": "[1.10.14, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
             }
           },
           "imports": [
