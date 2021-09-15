@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProductApi.Database
 {
     public class Products
     {
+        [Key]
+        public int productId { get; set; }
     }
 }

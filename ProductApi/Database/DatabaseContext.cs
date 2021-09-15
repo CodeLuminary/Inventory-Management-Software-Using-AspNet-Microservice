@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ProductApi.Database
 {
-    public class DatabaseContext
+    public class DatabaseContext : DbContext
     {
+        public DbSet<Products> products { get; set; }
     }
 }
