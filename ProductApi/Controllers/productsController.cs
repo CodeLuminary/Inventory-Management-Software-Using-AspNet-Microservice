@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductApi.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,24 @@ namespace ProductApi.Controllers
     [ApiController]
     public class productsController : ControllerBase
     {
-
+        private readonly IProductsRepository productsRepository;
+        public productsController(IProductsRepository productsRepository)
+        {
+            this.productsRepository = productsRepository;
+        }
         // GET: api/<productsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = await productsRepository.GetProductsAsync();
+            if(result.Count > 0)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         // GET api/<productsController>/5

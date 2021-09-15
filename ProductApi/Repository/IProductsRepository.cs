@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductApi.Repository
 {
-    interface IProductsRepository
+    public interface IProductsRepository
     {
         public Task<List<Products>> GetProductsAsync();
         public Task<List<Products>> addProducts(Products product);

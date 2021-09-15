@@ -13,6 +13,14 @@ namespace ProductApi.Repository
         public ProductsRepository(DatabaseContext dbContext)
         {
             this.dbContext = dbContext;
+            seedDatabase();
+        }
+        public void seedDatabase()
+        {
+            if (!dbContext.products.Any())
+            {
+                //Add products here
+            }
         }
         public async Task<List<Products>> addProducts(Products product)
         {
@@ -24,6 +32,9 @@ namespace ProductApi.Repository
         public Task<List<Products>> GetProductsAsync()
         {
             return Task.Run(()=>dbContext.products.ToList());
+            /*You can also use
+             return await dbContext.products.ToListAsync(); and add async to the function
+             */
         }
     }
 }
