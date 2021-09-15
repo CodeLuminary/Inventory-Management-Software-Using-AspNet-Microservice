@@ -16,11 +16,7 @@ namespace ProductApi.Repository
         }
         public async Task<List<Products>> addProducts(Products product)
         {
-            Products products = new Products()
-            {
-                
-            };
-            dbContext.products.Add(products);
+            dbContext.products.Add(product);
             await dbContext.SaveChangesAsync();
             return await GetProductsAsync();
         }
