@@ -19,7 +19,23 @@ namespace ProductApi.Repository
         {
             if (!dbContext.products.Any())
             {
-                //Add products here
+                //Add products
+                dbContext.products.Add(new Products() {
+                    productName = "Chocolatee",
+                    productQuantity = 10,
+                    costPrice = 200.0,
+                    sellingPrice = 250.0,
+                    productDescription = "This is just for testing"
+                });
+                dbContext.products.Add(new Products()
+                {
+                    productName = "Milk",
+                    productQuantity = 30,
+                    costPrice = 300.0,
+                    sellingPrice = 450.0,
+                    productDescription = "This is just for testing tooo"
+                });
+                dbContext.SaveChanges();
             }
         }
         public async Task<List<Products>> addProducts(Products product)
