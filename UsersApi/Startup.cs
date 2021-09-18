@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UsersApi.Database;
+using UsersApi.Repository;
 
 namespace UsersApi
 {
@@ -31,6 +34,8 @@ namespace UsersApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UsersApi", Version = "v1" });
             });
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;", b => b.MigrationsAssembly("ProductApi")));
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

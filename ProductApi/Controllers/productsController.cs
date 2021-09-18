@@ -44,6 +44,7 @@ namespace ProductApi.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
 
         // PUT api/<productsController>/5
