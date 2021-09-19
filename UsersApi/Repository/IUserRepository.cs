@@ -7,9 +7,9 @@ using UsersApi.Model;
 
 namespace UsersApi.Repository
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
-        public Task<UserModel> LoginUserAsync();
+        public string LoginUser(string username, string password);
         public Task<UserModel> addUser(Users user);
     }
 }

@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UsersApi.Database;
+using UsersApi.Model;
+using UsersApi.Repository;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +15,11 @@ namespace UsersApi.Controllers
     [ApiController]
     public class userController : ControllerBase
     {
+        private readonly IUserRepository userRepository;
+        public userController(IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
         // GET: api/<userController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -26,22 +34,14 @@ namespace UsersApi.Controllers
             return "value";
         }
 
-        // POST api/<userController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("authenticate")]
+       public IActionResult Authenticate([FromBody] UserCredential credential)
         {
+            return Ok();
         }
-
-        // PUT api/<userController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult AddUser([FromBody] Users user)
         {
-        }
-
-        // DELETE api/<userController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok();
         }
     }
 }

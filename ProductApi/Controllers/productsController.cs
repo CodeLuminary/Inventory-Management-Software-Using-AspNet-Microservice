@@ -53,7 +53,7 @@ namespace ProductApi.Controllers
             }
             catch(Exception)
             {
-                return BadRequest();
+                return StatusCode(500,"Internal server error");
             }
 
             var result = await productsRepository.addProducts(product);
@@ -63,7 +63,7 @@ namespace ProductApi.Controllers
             }
             else
             {
-                return NotFound();
+                return Ok(product);
             }
         }
 
