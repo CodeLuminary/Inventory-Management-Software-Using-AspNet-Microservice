@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using UsersApi.Repository;
 
 namespace UsersApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class userController : ControllerBase
@@ -34,14 +36,23 @@ namespace UsersApi.Controllers
             return "value";
         }
 
+        [AllowAnonymous]
         [HttpPost("authenticate")]
        public IActionResult Authenticate([FromBody] UserCredential credential)
         {
-            return Ok();
+            var token = userRepository.LoginUser(credential.userName, credential.password);
+            if(token == null)
+            {
+                return Unauthorized();
+            }
+            return Ok(token);
         }
-        public IActionResult AddUser([FromBody] Users user)
+        [AllowAnonymous]
+        [HttpPost("adduser")]
+        public async Task<IActionResult> AddUser([FromBody] Users user)
         {
-            return Ok();
+            var result = await userRepository.addUser(user);
+            return Ok(result);
         }
     }
 }

@@ -22,9 +22,12 @@ namespace UsersApi.Repository
             this.dbContext = dbContext;
             //seedDatabase();
         }
-        public Task<UserModel> addUser(Users user)
+        public async Task<string> addUser(Users user)
         {
-            throw new NotImplementedException();
+            user.password = encryptPassword(user.password, Key);
+            await dbContext.users.AddAsync(user);
+            await dbContext.SaveChangesAsync();
+            return "User added successfully";
         }
 
         public string LoginUser(string username, string password)

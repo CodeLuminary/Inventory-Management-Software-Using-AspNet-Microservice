@@ -10,6 +10,6 @@ namespace UsersApi.Repository
     public interface IUserRepository
     {
         public string LoginUser(string username, string password);
-        public Task<UserModel> addUser(Users user);
+        public Task<string> addUser(Users user);
     }
 }

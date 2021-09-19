@@ -34,6 +34,7 @@ namespace ProductApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProductApi", Version = "v1" });
             });
+
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;", b => b.MigrationsAssembly("ProductApi")));
             services.AddScoped<IProductsRepository, ProductsRepository>();
         }
