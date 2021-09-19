@@ -16,11 +16,10 @@ namespace UsersApi.Repository
     {
         DatabaseContext dbContext; //Declare a DatabaseContext object
         //ProductsRepository Constructor for injecting DatabaseContext object
-        String Key;
-        public UserRepository(DatabaseContext dbContext, string Key)
+        private string Key = "This is just a test key";
+        public UserRepository(DatabaseContext dbContext)
         {
             this.dbContext = dbContext;
-            this.Key = Key;
             //seedDatabase();
         }
         public Task<UserModel> addUser(Users user)
@@ -51,7 +50,7 @@ namespace UsersApi.Repository
             return tokenHandler.WriteToken(token);
         }
 
-        public string encryptPassword(string Password, string Passphrase)
+        private string encryptPassword(string Password, string Passphrase)
         {
             byte[] Results;
             System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();
@@ -75,7 +74,7 @@ namespace UsersApi.Repository
             }
             return Convert.ToBase64String(Results);
         }
-        public string decryptPassword(string Password, string Passphrase)
+        private string decryptPassword(string Password, string Passphrase)
         {
             byte[] Results;
             System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();
