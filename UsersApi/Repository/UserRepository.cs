@@ -32,7 +32,8 @@ namespace UsersApi.Repository
 
         public string LoginUser(string username, string password)
         {
-            if(!dbContext.users.Any(x => x.userName == username && decryptPassword(x.password, Key) == password))
+            password = encryptPassword(password, Key);
+            if(!dbContext.users.Any(x => x.userName == username && x.password == password))
             {
                 return null;
             }
