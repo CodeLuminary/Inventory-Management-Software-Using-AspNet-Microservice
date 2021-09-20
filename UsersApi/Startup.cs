@@ -55,7 +55,7 @@ namespace UsersApi
                 };
             });
 
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;", b => b.MigrationsAssembly("UserApi")));
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=master2;Trusted_Connection=True;", b => b.MigrationsAssembly("UsersApi")));
             services.AddScoped<IUserRepository, UserRepository>();
         }
 
