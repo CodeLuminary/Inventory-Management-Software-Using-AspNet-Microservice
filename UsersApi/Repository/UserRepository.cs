@@ -44,6 +44,7 @@ namespace UsersApi.Repository
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, username)
+                   // new Claim(ClaimTypes.Role,"admin")
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(20),
                 SigningCredentials = new SigningCredentials(
