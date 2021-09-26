@@ -12,7 +12,7 @@ using UsersApi.Repository;
 
 namespace UsersApi.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class userController : ControllerBase

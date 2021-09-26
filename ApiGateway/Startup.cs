@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -5,12 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ApiGateway
@@ -33,6 +36,22 @@ namespace ApiGateway
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiGateway", Version = "v1" });
             });
+            services.AddAuthentication(configOptions =>
+            {
+                configOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                configOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer("providerKey", jwtBearerOptions =>
+            {
+                jwtBearerOptions.RequireHttpsMetadata = false; //This should be set to true in production environment
+                jwtBearerOptions.SaveToken = true;//Save token in authentication properties
+                jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters //Set parameters used to validate the token
+                {
+                    ValidateIssuerSigningKey = true, //Validate security key used for signing the token
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("This is just a test key")), //Set issuer signing key
+                    ValidateIssuer = false, //Don't validate issuer
+                    ValidateAudience = false
+                };
+            });
             services.AddOcelot();
         }
 
@@ -49,6 +68,7 @@ namespace ApiGateway
             app.UseRouting();
 
             //app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

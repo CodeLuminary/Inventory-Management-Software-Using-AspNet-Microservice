@@ -10,7 +10,11 @@
         }
       ],
       "UpstreamPathTemplate": "/user",
-      "UpstreamHttpMethod": [ "GET", "POST" ]
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "providerKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/products",
@@ -24,6 +28,7 @@
       "UpstreamPathTemplate": "/products",
       "UpstreamHttpMethod": [ "GET", "POST" ]
     }
+
   ],
   "GlobalConfiguration": {
     "BaseUrl": "localhost:9694"

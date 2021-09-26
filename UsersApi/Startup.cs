@@ -38,7 +38,7 @@ namespace UsersApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UsersApi", Version = "v1" });
             });
 
-            services.AddAuthentication(x =>
+           /* services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -53,7 +53,7 @@ namespace UsersApi
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-            });
+            });*/
 
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=master2;Trusted_Connection=True;", b => b.MigrationsAssembly("UsersApi")));
             services.AddScoped<IUserRepository, UserRepository>();
@@ -71,7 +71,7 @@ namespace UsersApi
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
 
             app.UseAuthorization();
 
