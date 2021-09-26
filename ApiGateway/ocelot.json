@@ -14,6 +14,9 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "providerKey",
         "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
       }
     },
     {

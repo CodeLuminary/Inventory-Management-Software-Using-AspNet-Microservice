@@ -33,7 +33,9 @@ namespace UsersApi.Repository
         public string LoginUser(string username, string password)
         {
             password = encryptPassword(password, Key);
-            if(!dbContext.users.Any(x => x.userName == username && x.password == password))
+            Users user = dbContext.users.ToList().Where(x => x.userName == username && x.password == password).FirstOrDefault();
+     
+           if(user == null)
             {
                 return null;
             }
@@ -43,8 +45,8 @@ namespace UsersApi.Repository
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, username)
-                   // new Claim(ClaimTypes.Role,"admin")
+                    new Claim("UserName", username),
+                    new Claim("Role",user.role)
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(20),
                 SigningCredentials = new SigningCredentials(
