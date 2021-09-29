@@ -1,4 +1,6 @@
 ﻿using InventoryMangement.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -21,6 +23,16 @@ namespace InventoryMangement.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public IActionResult login(IFormCollection collection)
+        {
+            string email = HttpContext.Request.Form["email"];
+            return Content(email);
+            //var data = new {userName = collection.Get("email")};
+            //return View();
         }
 
         public IActionResult Privacy()

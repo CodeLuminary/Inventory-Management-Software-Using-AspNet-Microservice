@@ -1,7 +1,17 @@
 ﻿.content{height: 100vh}
-.content > div{height: 100%}
+.content > div{height: 100%;}
 @media only screen and (max-width: 767px){
     .content > div:first-child{
         display:none;
     }
 }
+.content > div:first-child{
+    background-image: url('../Images/Inventory2.jpg');
+    background-size: cover;
+}
+.content > div:last-child{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.required{color:red;}
