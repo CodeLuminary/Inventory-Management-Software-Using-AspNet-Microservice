@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0GjF/1mOdRQ5EuiXiXogckAOq0nlCj9NbSgP+eaSl0OW+UAMw4y/XG7vjmL1T67B78VKupVUAUmonG53fDnauQ==",
+  "dgSpecHash": "JRXRUgMKDOXytq1jr0UgNVLAZS93LQkOG6f3Oh6KhxymxqHvtkviYI+rt7Ju3TTasZvSG8v18FmlOYVFPnLpTA==",
   "success": true,
   "projectFilePath": "C:\\Users\\VICTOR\\source\\repos\\InventoryMangement\\InventoryMangement\\InventoryMangement.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\VICTOR\\.nuget\\packages\\restsharp\\106.12.0\\restsharp.106.12.0.nupkg.sha512"
+  ],
   "logs": []
 }

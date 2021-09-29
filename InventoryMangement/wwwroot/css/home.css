@@ -14,4 +14,16 @@
     align-items:center;
     justify-content:center;
 }
+.content > div:last-child > div {
+    border-radius: 10px;
+    box-shadow: 0px 1px 17px 1px rgba(170, 170, 170, 1);
+    padding: 10px 5% 20px;
+    width: 90%;
+}
 .required{color:red;}
+.content input[type="email"],.content input[type="password"]{
+    width: 90%;
+    height: 35px;border-radius: 5px;
+    margin: 2px 0px 5px;
+    padding-left: 5px;
+}

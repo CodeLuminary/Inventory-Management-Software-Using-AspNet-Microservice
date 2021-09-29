@@ -8,4 +8,8 @@
     <None Include="wwwroot\Images\Inventory2.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="106.12.0" />
+  </ItemGroup>
+
 </Project>
