@@ -41,6 +41,7 @@ namespace InventoryMangement.Controllers
             var responseMessage = client.PostAsJsonAsync("http://localhost:46229/api/user/authenticate", data).Result; //please make sure to change this to production url when you go live
             var responseStr = responseMessage.Content.ReadAsStringAsync().Result;
             return Content(responseStr);
+            //return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Privacy()
