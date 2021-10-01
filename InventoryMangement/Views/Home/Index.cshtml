@@ -14,20 +14,19 @@
             <div class="col-6"></div>
             <div class="col-6 col-xs-12">
                 <div>
-                    <form method="post" action="/Home/login">
-                        @Html.AntiForgeryToken()
+                    
                         <h3>LOG IN</h3>
                         <span>Enter Email<span class="required">*</span></span><br />
                         <input type="text" required="required" name="email" class="loginInput" /><br />
                         <span>Enter Password<span class="required">*</span></span><br />
                         <input type="password" required="required" name="password" class="loginInput" /><br />
                         <p>
-                            <input type="submit" value="Log In" />
+                            <button onclick="loginUser()">Login</button>
                         </p>
-                        <p>@ViewBag.result</p>
-                    </form>
+                      
                 </div>
             </div>
         </div>
+        <script src="~/js/shared/site.js"></script>
     </body>
 </html>
