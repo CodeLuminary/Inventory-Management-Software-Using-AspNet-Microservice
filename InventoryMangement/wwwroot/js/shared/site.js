@@ -6,18 +6,19 @@ const loginUser = () => {
     let credential = {};
     credential.userName = "victor2"
     credential.password = "12345";
-    ajaxApi(credential);
+    //ajaxApi(credential);
+    fetchApi(credential);
 }
 function ajaxApi(jsonObject) {
     let xhhtp = new XMLHttpRequest();
     xhhtp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             alert(xhhtp.responseText);
-            let jsonResponse = JSON.parse(xhhtp.responseText);
+            /*let jsonResponse = JSON.Parse(xhhtp.responseText);
             if (typeof jsonResponse === 'string') {//Check to see if the jsonResponse variable is still a string and not an object
                 jsonResponse = JSON.parse(jsonResponse)
                 //Get response here
-            }
+            }*/
         }
     }
     xhhtp.open("POST", 'http://localhost:9694/user/login', true);
@@ -42,17 +43,16 @@ function ajaxApi(jsonObject, url) {
 }*/
 
 function fetchApi(jsonObject) {
-    fetch('/api/zoom', {
+    fetch('http://localhost:9694/user/login', {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'cors',
         cache: 'no-cache',
         headers: {
             'Content-Type': 'application/json'
         },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
         body: JSON.stringify(jsonObject)
     }).then(response => response.json()).then(data => {
         //Get response here
+        alert(data)
     });
 }

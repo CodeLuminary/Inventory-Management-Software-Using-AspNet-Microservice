@@ -13,15 +13,16 @@
         <div class="col-12 content">
             <div class="col-6"></div>
             <div class="col-6 col-xs-12">
-                <div >
+                <div class="loginDiv">
                     
-                        <h3>LOG IN</h3>
+                        <h4>LOG IN</h4>
                         <span>Enter Email<span class="required">*</span></span><br />
-                        <input type="text" required="required" name="email" class="loginInput" /><br />
+                        <input type="text" placeholder="Enter email" required="required" name="email" class="loginInput" /><br />
                         <span>Enter Password<span class="required">*</span></span><br />
-                        <input type="password" required="required" name="password" class="loginInput" /><br />
-                        <p>
-                            <button onclick="loginUser()">Login</button>
+                        <input type="password" placeholder="Enter password" required="required" name="password" class="loginInput" /><br />
+                        <a class="forgotPassword" href="/forget-password.html">Forgot Password?</a>
+                        <p style="text-align:center">
+                            <button class="btn btnRed" onclick="loginUser()">Login</button>
                         </p>
                       
                 </div>
