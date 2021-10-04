@@ -20,6 +20,7 @@ namespace ApiGateway
 {
     public class Startup
     {
+        readonly string AllowSpecifiOrigin = "_AllowSpecifiOrigin";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,7 +31,14 @@ namespace ApiGateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowSpecifiOrigin,
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44379");
+                    });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -66,6 +74,13 @@ namespace ApiGateway
             }
 
             app.UseRouting();
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
+
+                await next();
+            });
+            app.UseCors(AllowSpecifiOrigin);//Make sure this is after UseRouting & before UseAuthorization        
 
             app.UseAuthorization();
             app.UseAuthentication();

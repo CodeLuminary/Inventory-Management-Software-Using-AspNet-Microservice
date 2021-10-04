@@ -12,6 +12,7 @@ function ajaxApi(jsonObject) {
     let xhhtp = new XMLHttpRequest();
     xhhtp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            alert(xhhtp.responseText);
             let jsonResponse = JSON.parse(xhhtp.responseText);
             if (typeof jsonResponse === 'string') {//Check to see if the jsonResponse variable is still a string and not an object
                 jsonResponse = JSON.parse(jsonResponse)
@@ -19,17 +20,32 @@ function ajaxApi(jsonObject) {
             }
         }
     }
-    xhhtp.open("POST", 'http://localhost:9694/api/user/authenticate', true);
-    xhhtp.setRequestHeader("Content-type", "application/json");
+    xhhtp.open("POST", 'http://localhost:9694/user/login', true);
+    xhhtp.setRequestHeader("Content-Type", "application/json");
     xhhtp.send(JSON.stringify(jsonObject));
 }
+/*
+function ajaxApi(jsonObject, url) {
+    let xhhtp = new XMLHttpRequest();
+    xhhtp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let jsonResponse = JSON.parse(xhhtp.responseText);
+            if (typeof jsonResponse === 'string') {//Check to see if the jsonResponse variable is still a string and not an object
+                jsonResponse = JSON.parse(jsonResponse)
+                //Get response here
+            }
+        }
+    }
+    xhhtp.open("POST", url, true);
+    xhhtp.setRequestHeader("Content-type", "application/json");
+    xhhtp.send(JSON.stringify(jsonObject));
+}*/
 
 function fetchApi(jsonObject) {
     fetch('/api/zoom', {
         method: 'POST',
         mode: 'no-cors',
         cache: 'no-cache',
-        credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json'
         },
