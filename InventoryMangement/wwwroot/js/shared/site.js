@@ -4,8 +4,8 @@
 // Write your JavaScript code.
 const loginUser = () => {
     let credential = {};
-    credential.userName = "victor2"
-    credential.password = "12345";
+    credential.userName = document.getElementById("email");
+    credential.password = document.getElementById("password");
     //ajaxApi(credential);
     fetchApi(credential);
 }
