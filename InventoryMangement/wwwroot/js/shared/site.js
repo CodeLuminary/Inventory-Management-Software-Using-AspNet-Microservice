@@ -51,6 +51,10 @@ function fetchApi(jsonObject) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(jsonObject)
-    }).then(response => response.text()).then(data => { alert(data)
+    }).then(response => {
+            response.text();       
+    }).then(data => {
+        alert(data);
+        sessionStorage.setItem("token", data);
     });
 }
