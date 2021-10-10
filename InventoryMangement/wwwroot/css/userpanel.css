@@ -13,7 +13,7 @@ body {
     left: 0;
     width: var(--nav-width);
     height: 100vh;
-    background: #dc3031;
+    background: #428bca;
     padding-top: 70px;
     float: left;
 }
