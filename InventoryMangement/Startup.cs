@@ -48,9 +48,12 @@ namespace InventoryMangement
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(name: "userpanel",
+                   pattern: "userpanel/{*add-item}",
+                defaults: new { controller = "userpanel", action = "Index" });
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");          
             });
         }
     }
