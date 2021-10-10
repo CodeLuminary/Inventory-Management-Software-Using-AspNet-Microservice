@@ -37,3 +37,4 @@ C:\Users\VICTOR\source\repos\InventoryMangement\InventoryMangement\obj\Debug\net
 C:\Users\VICTOR\source\repos\InventoryMangement\InventoryMangement\obj\Debug\net5.0\InventoryMangement.genruntimeconfig.cache
 C:\Users\VICTOR\source\repos\InventoryMangement\InventoryMangement\obj\Debug\net5.0\InventoryMangement.csproj.CopyComplete
 C:\Users\VICTOR\source\repos\InventoryMangement\InventoryMangement\bin\Debug\net5.0\RestSharp.dll
+C:\Users\VICTOR\source\repos\InventoryMangement\InventoryMangement\obj\Debug\net5.0\Razor\Views\userpanel\Index.cshtml.g.cs
